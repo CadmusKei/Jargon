@@ -7,7 +7,7 @@ A repository to track our progress and store benchmark screenshots as we prepare
 ## Repository Structure
 
 - **-Guides/**
-  - Detailed step by step guides for current distro/software versions.
+  - Detailed step by step guides for current distro/software versions/
 
 - **BTOP From Source/**
   - members-screenshots/
