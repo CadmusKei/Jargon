@@ -28,5 +28,5 @@ A repository to track our progress and store benchmark screenshots as we prepare
 
 - Maxwell Kei Farouk
 - Pride Mcpectane
-- Erin Salo
+- Erin Jordan Salo
 - Ashley Kieran Tom
