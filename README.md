@@ -31,7 +31,7 @@ Jargon/
 | `HPL-Install` | HPL benchmark installation process and screenshots |
 | `HPL-Optimisation` | HPL tuning and optimisation results |
 | `Passwordless-SSH` | Setting up passwordless SSH between nodes |
-| `Tutorial-Briefs` | Short briefs and reference notes for each tutorial topic |
+| `Tutorial-Briefs` | briefs for each tutorial topic |
 
 ## Team Members
 
