@@ -141,7 +141,7 @@ ssh-copy-id -i ~/.ssh/id_ed25519.pub hpcuser@192.168.56.10
 
 **Test ProxyJump:**
 ```bash
-ssh compute1    # should land on compute1 via headnode in one command without password
+ssh compute1    
 ssh compute2
 ```
 
@@ -151,6 +151,18 @@ ssh compute2
 
 ---
 
+# Basline hardening
+
+`sudo nano /etc/ssh/sshd_config`
+
+```Bash
+PermitRootLogin no
+PasswordAuthentication no
+PermitEmptyPasswords no
+IgnoreRhosts yes 
+```
+
+---
 
 sh-copy-id -i ~/.ssh/id_ed25519.pub -p 2225 hpcuser@127.0.0.1
 
@@ -184,7 +196,7 @@ sh-copy-id -i ~/.ssh/id_ed25519.pub -p 2225 hpcuser@127.0.0.1
 
 ---
   
-  ** Proxyjump still assks for password**
+  ** Proxyjump still asks for password**
 
 **Solution**
 ```Bash
@@ -217,4 +229,33 @@ why wouldnt we want the personal user to be doing the sshing, since it may need 
 
 ---
 
+** systemctl --failed #Errors**
+[kei@headnode ~]$ systemctl --failed
+  UNIT           LOAD   ACTIVE SUB    DESCRIPTION                           
+● mcelog.service loaded failed failed Machine Check Exception Logging Daemon
+
+LOAD   = Reflects whether the unit definition was properly loaded.
+ACTIVE = The high-level unit activation state, i.e. generalization of SUB.
+SUB    = The low-level unit activation state, values depend on unit type.
+1 loaded units listed.
+**Solution**
+sudo systemctl stop mcelog
+sudo systemctl disable mcelog
+sudo systemctl mask mcelog
+sudo systemctl reset-failed mcelog
+
+[kei@compute2 ~]$ systemctl --failed
+  UNIT                  LOAD   ACTIVE SUB    DESCRIPTION  
+● dnf-makecache.service loaded failed failed dnf makecache
+
+LOAD   = Reflects whether the unit definition was properly loaded.
+ACTIVE = The high-level unit activation state, i.e. generalization of SUB.
+SUB    = The low-level unit activation state, values depend on unit type.
+1 loaded units listed.
+**Solution**
+sudo systemctl reset-failed dnf-makecache
+sudo systemctl disable --now dnf-makecache.timer
+sudo systemctl mask dnf-makecache.service
+
+--- 
 
