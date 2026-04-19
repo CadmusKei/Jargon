@@ -17,3 +17,39 @@ Windows: type %USERPROFILE%\.ssh\id_ed25519.pub | ssh kei@127.0.0.1
 Linux: ssh-copy-id -p 2222 username@vm_ip_address
 
 sudo hostnamectl set-hostname headnode
+
+*screenshot output of hostname and cat /etc/os-release*
+
+### On Compute 1 and 2
+
+sudo hostnamectl set-hostname compute1
+sudo hostnamectl set-hostname compute2
+
+*screenshot output of hostname and cat /etc/os-release*
+
+ # errors:
+
+** enp0s8 does not have ipv4 so `sudo nmcli con mod enp0s8 ipv4.addresses 10.0.0.1/24` ** -> This lead us to a different solution and caused us to learn the following:
+ -This taught us about the differences between connections and interfaces.
+ -Difference between NIC and an interface?
+ -Can virtual machines have multiple NICs?
+ -Is enp0s8 the name of the NIC?
+ -Why is the connection type on a virtual network ethernet?
+ -What does enp0s3/enp0s8 actionally mean? (en = ethernet)
+ -Why did the headnode face this issue and not the compute nodes?
+ -DIfference between /etc/hosts and /etc/hostname
+ ** solution **
+ ```Bash
+    sudo nmcli con mod "Wired connection 1" connection.interface-name enp0s8
+    sudo nmcli con mod "Wired connection 1" ipv4.addresses 10.0.0.1/24
+    sudo nmcli con mod "Wired connection 1" ipv4.method manual
+    sudo nmcli con up "Wired connection 1"
+ ```
+
+ ** 100% packet loss upon ping headNode -c 3` **
+  ** solution **
+  Ensure all internal network adaptesr are set to the same name and all machines are on :[
+
+
+
+
