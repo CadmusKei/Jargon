@@ -31,6 +31,8 @@ Code compiled specifically for HPC hardware can use instruction sets like `AVX`,
    make PREFIX=$HOME/opt/openblas install
    ```
 
+    Go back to /user (/kei or /el) folder
+
 1. Fetch, Unpack and Compile OpenMPI Source Files
    ```bash
    # Fetch and unpack the source files

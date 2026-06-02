@@ -7,3 +7,5 @@
 
 **What is gcc and g++**
 
+**What is $PATH**
+
