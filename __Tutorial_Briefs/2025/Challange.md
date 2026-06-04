@@ -1,4 +1,4 @@
-# Building and Compiling OpenBLAS and OpenMPI Libraries from Source
+    # Building and Compiling OpenBLAS and OpenMPI Libraries from Source
 
 You now have a functioning HPL benchmark. However, using math libraries (BLAS, LAPACK, ATLAS) from a repository (`dnf`) will not yield optimal performance, because these repositories contain generic code compiled to work on all x86 hardware. If you were monitoring your compute during the execution of `xhpl`, you would have noticed that the OpenMPI and Atlas configurations restricted HPL to running with no more than two OpenMP threads.
 
@@ -30,7 +30,6 @@ Code compiled specifically for HPC hardware can use instruction sets like `AVX`,
    make
    make PREFIX=$HOME/opt/openblas install
    ```
-
     Go back to /user (/kei or /el) folder
 
 1. Fetch, Unpack and Compile OpenMPI Source Files

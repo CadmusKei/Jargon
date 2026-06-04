@@ -54,7 +54,7 @@ sudo hostnamectl set-hostname compute2
 ```Bash
 sudo nmcli con mod enp0s3 ipv4.addresses 10.0.0.2/24
 sudo nmcli con mod enp0s3 ipv4.method manual
-sudo nmcli con up enp0s3
+sudo nmcli con up enp0s3clear
 ```
 
 **Edit /etc/hosts on ALL three nodes:**
@@ -93,6 +93,7 @@ id hpcuser
 Should show `uid=1001(hpcuser) gid=1001(hpcgroup)` on all nodes.
 
 ---
+
 
 # SSH and Key-setup
 
@@ -146,7 +147,7 @@ Host compute2
 
 **First, copy your laptop's public key to headnode:**
 ```bash
-ssh-copy-id -i ~/.ssh/id_ed25519.pub hpcuser@192.168.56.10
+ssh-copy-id -i ~/.ssh/id_ed25519.pub headnode
 ```
 
 **Test ProxyJump:**
