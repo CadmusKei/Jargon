@@ -2,10 +2,6 @@
 
 A repository to track our progress and store benchmark screenshots as we prepare for the CHPC 2026 Student Cluster Competition, representing the University of the Western Cape.
 
-## About
-
-This repository documents Jargon's preparation and competition work for the CHPC 2026 Student Cluster Competition, representing the University of the Western Cape.
-
 ## Repository Structure
 
 ```
@@ -64,4 +60,7 @@ Jargon/
 - Erin Jordan Salo
 - Ashley Kieran Tom
 
+## About
+
+This repository documents Jargon's preparation and competition work for the CHPC 2026 Student Cluster Competition, representing the University of the Western Cape.
 
