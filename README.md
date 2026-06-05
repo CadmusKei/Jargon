@@ -56,7 +56,7 @@ Jargon/
 ## Team Members
 
 - Maxwell Kei Farouk
-- Pride Mcpectane Mnisi
+- Pride McPetane Mnisi
 - Erin Jordan Salo
 - Ashley Kieran Tom
 
