@@ -21,9 +21,15 @@
       become: yes
 
     - name: Install HPL
-      shell: wget http://www.netlib.org/benchmark/hpl/hpl-2.3.tar.gz && tar -xzf hpl-2.3.tar.gz && mv hpl-2.3 hpl
+      shell: wget http://www.netlib.org/benchmark/hpl/hpl-2.3.tar.gz && tar -xzf hpl-2.3.tar.gz && mv hpl-2.3 hpl 
       args:
         creates: /home/kei/hpl
+
+    - name: Remove ZIP
+      file: 
+        path: /home/kei/hpl-2.3.tar.gz 
+        state: absent
+      become: yes
 
     - name: Copy Makefile template
       shell: cp setup/Make.Linux_PII_CBLAS_gm Make.Jargon
@@ -62,7 +68,6 @@
         - { regexp: '^\d\s*# of process grids \(P x Q\)', replace: '1      # of process grids (P x Q)' }
         - { regexp: '^\d\s\d\s\d\s*Ps', replace: '1      Ps' }
         - { regexp: '^\d\s\d\s\d\s*Qs', replace: '1      Qs' }
-      
 
 
 
