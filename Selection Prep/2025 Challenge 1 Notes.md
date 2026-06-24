@@ -1,4 +1,4 @@
-# Challenge 1 — Insights
+    # Challenge 1 — Insights
 
 ## `configure`, `make`, and `make install`
 

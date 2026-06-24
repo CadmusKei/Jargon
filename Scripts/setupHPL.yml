@@ -7,6 +7,10 @@
         name: "*"
         state: latest
       become: yes
+      
+    - name: Enable CRB repository
+        command: dnf config-manager --set-enabled crb
+        become: yes
 
     - name: Install dependencies
       dnf:
