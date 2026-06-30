@@ -1,0 +1,65 @@
+---
+# create-user.yml
+# Creates a user and matching group across the cluster, with optional
+# password and optional sudo.
+#
+- name: Create a user and group across the cluster
+  hosts: all
+  become: yes
+  vars_prompt:
+    - name: new_username
+      prompt: "Enter the username to create"
+      private: no
+
+    - name: new_password
+      prompt: "Enter a password for the user (leave blank to skip)"
+      private: yes
+      encrypt: "sha512_crypt"
+      confirm: yes
+      default: ""
+
+    - name: grant_sudo_input
+      prompt: "Grant passwordless sudo? (y/n)"
+      private: no
+
+  vars:
+    grant_sudo: "{{ grant_sudo_input | lower in ['y', 'yes'] }}"
+
+  tasks:
+    - name: Fail early if username is empty
+      fail:
+        msg: "new_username must be set."
+      when: new_username | length == 0
+
+    - name: Create group matching username
+      group:
+        name: "{{ new_username }}"
+        state: present
+
+    - name: Create user
+      user:
+        name: "{{ new_username }}"
+        group: "{{ new_username }}"
+        shell: /bin/bash
+        create_home: yes
+        state: present
+
+    - name: Set password for user
+      user:
+        name: "{{ new_username }}"
+        password: "{{ new_password }}"
+      when: new_password | length > 0
+
+    - name: Grant passwordless sudo
+      copy:
+        dest: "/etc/sudoers.d/{{ new_username }}"
+        content: "{{ new_username }} ALL=(ALL) NOPASSWD:ALL\n"
+        owner: root
+        group: root
+        mode: '0440'
+        validate: 'visudo -cf %s'
+      when: grant_sudo | bool
+
+    - name: Show summary
+      debug:
+        msg: "Created user '{{ new_username }}' (group '{{ new_username }}') on {{ inventory_hostname }}, sudo: {{ grant_sudo }}."
