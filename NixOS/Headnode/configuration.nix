@@ -1,11 +1,13 @@
   { config, pkgs, ... }:
 
   {
-    
+
     # === Programs ===
+
     environment.systemPackages = with pkgs; [
       wget
       btop
+      htop
       gcc
     ];
 
@@ -32,6 +34,14 @@
     
     # Enable networking
     networking.networkmanager.enable = true;
+
+    # Hosts
+    networking.extraHosts =
+    ''
+      10.0.0.1 headnode
+      10.0.0.2 com1
+      10.0.0.3 com2
+    '';
 
     # === Shell ===
 
