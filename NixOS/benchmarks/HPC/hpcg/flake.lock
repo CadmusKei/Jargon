@@ -1,0 +1,44 @@
+{
+  "nodes": {
+    "hpcg": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1695499687,
+        "narHash": "sha256-n+Qz0G630SyG3v1E1buwjHO8t779tq2TbWBcAjwwvxw=",
+        "owner": "hpcg-benchmark",
+        "repo": "hpcg",
+        "rev": "114602d458d1034faa52b71e4c15aba9b3a17698",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hpcg-benchmark",
+        "repo": "hpcg",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1790185690,
+        "narHash": "sha256-xJ+X4hBtOcAFGBOe5nAMyMUeF9foJBmIOu3NjBqBycU=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "4975466d324710c576dc11ad614684e6bd8cad8e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "hpcg": "hpcg",
+        "nixpkgs": "nixpkgs"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
